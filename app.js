@@ -35,9 +35,7 @@ app.post('/', async (req, res) => {
   res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
 })
 
-app.listen(3700, () => {
-  console.log('listening on port 3700')
-})
+app.listen(process.env.PORT || 3000);
 
 async function callApi(ticker) {
   let today = new Date();
