@@ -6,6 +6,8 @@ const app = express();
 
 app.use(express.json());
 
+app.listen(process.env.PORT || 3000);
+
 app.use(
     cors({
       allowedHeaders: ["authorization", "Content-Type", "Acess-Control-Allow-Origin"], // you can change the headers
@@ -34,8 +36,6 @@ app.post('/', async (req, res) => {
   }
   res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
 })
-
-app.listen(process.env.PORT || 3000);
 
 async function callApi(ticker) {
   let today = new Date();
