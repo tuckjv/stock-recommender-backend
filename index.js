@@ -4,9 +4,9 @@ import axios from 'axios';
 import express, { response } from "express"
 const app = express();
 
-app.use(express.json());
+app.use(express.static("public"));
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
 
 app.use(
     cors({
