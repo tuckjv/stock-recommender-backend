@@ -1,11 +1,11 @@
 import cors from 'cors';
 import axios from 'axios';
-import 'dotenv/config';
+import sslRedirect from 'heroku-ssl-redirect';
 
 import express, { response } from "express"
 const app = express();
 
-app.use(express.static("public"));
+app.use(sslRedirect());
 
 app.listen(process.env.PORT || 5000);
 
