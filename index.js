@@ -1,5 +1,6 @@
 import cors from 'cors';
 import axios from 'axios';
+import 'dotenv/config';
 
 import express, { response } from "express"
 const app = express();
