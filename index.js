@@ -1,6 +1,6 @@
 import cors from 'cors';
 import axios from 'axios';
-import sslRedirect from 'heroku-ssl-redirect'
+const sslRedirect = require('heroku-ssl-redirect').default
 
 import express from "express"
 const app = express();
