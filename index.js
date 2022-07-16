@@ -1,11 +1,8 @@
 import cors from 'cors';
 import axios from 'axios';
-import sslRedirect from 'heroku-ssl-redirect';
 
 import express, { response } from "express"
 const app = express();
-
-app.use(sslRedirect());
 
 app.listen(process.env.PORT || 5000);
 
