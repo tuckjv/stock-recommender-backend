@@ -1,8 +1,11 @@
 import cors from 'cors';
 import axios from 'axios';
+import redirectSSL from 'redirect-ssl'
 
 import express from "express"
 const app = express();
+
+app.use(redirectSSL);
 
 app.use(express.json());
 
