@@ -1,11 +1,11 @@
 import cors from 'cors';
 import axios from 'axios';
-import redirectSSL from 'redirect-ssl'
+import sslRedirect from 'heroku-ssl-redirect'
 
 import express from "express"
 const app = express();
 
-app.use(redirectSSL);
+app.use(sslRedirect());
 
 app.use(express.json());
 
