@@ -42,6 +42,7 @@ app.post('/', async (req, res) => {
 })
 
 async function callApi(ticker) {
+  console.log(ticker);
   let today = new Date();
   let month1 = String(today.getMonth() + 1).padStart(2, '0');
   let day1 = String(today.getDate()).padStart(2, '0');
