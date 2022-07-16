@@ -5,11 +5,11 @@ import sslRedirect from 'heroku-ssl-redirect'
 import express from "express"
 const app = express();
 
+app.listen(process.env.PORT || 3000);
+
 app.use(sslRedirect());
 
 app.use(express.json());
-
-app.listen(process.env.PORT || 5001);
 
 app.use(
     cors({
