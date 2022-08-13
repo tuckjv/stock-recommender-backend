@@ -20,6 +20,7 @@ app.use(
 }));
 
 app.post('/', async (req, res) => {
+  res.header({'Access-Control-Allow-Origin' : 'https://www.tuckersstocks.site'});
   let tickers = [req.body.first, req.body.second, req.body.third, req.body.fourth, req.body.fifth];
   let reccomend = [];
   let notRec = [];
