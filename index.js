@@ -9,6 +9,13 @@ app.use(sslRedirect());
 
 app.use(express.json());
 
+app.use(
+  cors({
+    origin: '*',
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false
+}));
+
 app.post('/', async (req, res) => {
   let tickers = [req.body.first, req.body.second, req.body.third, req.body.fourth, req.body.fifth];
   let reccomend = [];
