@@ -1,3 +1,4 @@
+import cors from 'cors';
 import axios from 'axios';
 import herokuSSLRedirect from 'heroku-ssl-redirect'
 const sslRedirect = herokuSSLRedirect.default
