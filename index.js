@@ -1,4 +1,3 @@
-import cors from 'cors';
 import axios from 'axios';
 import herokuSSLRedirect from 'heroku-ssl-redirect'
 const sslRedirect = herokuSSLRedirect.default
@@ -9,13 +8,6 @@ const app = express();
 app.use(sslRedirect());
 
 app.use(express.json());
-
-app.use(
-  cors({
-    origin: '*',
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false
-}));
 
 app.post('/', async (req, res) => {
   let tickers = [req.body.first, req.body.second, req.body.third, req.body.fourth, req.body.fifth];
