@@ -18,6 +18,9 @@ app.post('/', async (req, res) => {
   let neutral = []; 
   for (var i = 0; i < 5; ++i) {
     let curr = await callApi(tickers[i]);
+    if (curr === 'fail') {
+      return null;
+    }
     if (curr[0] - curr[1] > 0) {
       reccomend.push(tickers[i])
     }
@@ -39,7 +42,10 @@ async function callApi(ticker) {
   let year1 = today.getFullYear();
   console.log(month1);
   let sum = 0;
-  const resp = await axios.get(`http://api.marketstack.com/v1/eod?access_key=9ab57e74c200c57c32baa2f8fab0e558&symbols=${ticker}&date_from=2000-01-01&date_to=${year1}-${month1}-${day1}&limit=200`);
+  const resp = await axios.get(`http://api.marketstack.com/v1/eod?access_key=9ab57e74c200c57c32baa2f8fab0e558&symbols=${ticker}&date_from=2000-01-01&date_to=${year1}-${month1}-${day1}&limit=200`).catch(() => {return 'fail';});
+  if (resp === 'fail') {
+    return 'fail';
+  }
   for (let i = 0; i < 50; ++i) {
     console.log(resp.data['data'][i]['date'])
     sum += resp.data['data'][i]['close'];
