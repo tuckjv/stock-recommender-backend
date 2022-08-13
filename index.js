@@ -5,7 +5,7 @@ const sslRedirect = herokuSSLRedirect.default
 import express from "express"
 const app = express();
 
-app.listen(process.env.port || 5000);
+app.listen(process.env.PORT || 5000);
 
 app.use(sslRedirect());
 
