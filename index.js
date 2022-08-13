@@ -14,9 +14,7 @@ app.use(express.json());
 
 app.use(
     cors({
-      allowedHeaders: ["authorization", "Content-Type", "Acess-Control-Allow-Origin"], // you can change the headers
-      exposedHeaders: ["authorization", "Access-Control-Allow-Origin"], // you can change the headers
-      origin: "https://www.tuckersstocks.site",
+      origin: 'https://www.tuckersstocks.site',
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: false
 }));
