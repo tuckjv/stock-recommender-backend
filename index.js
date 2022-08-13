@@ -12,13 +12,6 @@ app.use(sslRedirect());
 
 app.use(express.json());
 
-app.use(
-    cors({
-      origin: 'https://www.tuckersstocks.site',
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-      preflightContinue: false
-}));
-
 app.post('/', async (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "https://www.tuckersstocks.site");
   res.setHeader("Access-Control-Allow-Credentials", "true");
