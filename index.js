@@ -14,14 +14,16 @@ app.use(express.json());
 
 app.use(
     cors({
-      allowedHeaders : {'Access-Control-Allow-Origin' : 'https://www.tuckersstocks.site'},
-      exposedHeaders : {'Access-Control-Allow-Origin' : 'https://www.tuckersstocks.site'},
       origin: 'https://www.tuckersstocks.site',
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       preflightContinue: false
 }));
 
 app.post('/', async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
   let tickers = [req.body.first, req.body.second, req.body.third, req.body.fourth, req.body.fifth];
   let reccomend = [];
   let notRec = [];
