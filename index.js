@@ -8,7 +8,7 @@ const app = express();
 
 app.listen(process.env.PORT || 5000);
 
-app.use(timeout('10s'))
+app.use(timeout('15s'))
 
 app.use(sslRedirect());
 
