@@ -1,15 +1,20 @@
 import axios from 'axios';
 import herokuSSLRedirect from 'heroku-ssl-redirect'
 const sslRedirect = herokuSSLRedirect.default
+import timeout from 'connect-timeout'
 
 import express from "express"
 const app = express();
 
 app.listen(process.env.PORT || 5000);
 
+app.use(timeout('10s'))
+
 app.use(sslRedirect());
 
 app.use(express.json());
+
+app.use(haltOnTimedout);
 
 app.post('/', async (req, res) => {
   let tickers = [req.body.first, req.body.second, req.body.third, req.body.fourth, req.body.fifth];
@@ -58,4 +63,8 @@ async function callApi(ticker) {
   let day200avg = sum / 200;
   console.log(day200avg);
   return [day50avg, day200avg]
+}
+
+function haltOnTimedout(req, res, next) {
+  if (!req.timedout) next()
 }
