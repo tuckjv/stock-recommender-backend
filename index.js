@@ -21,12 +21,12 @@ app.post('/', async (req, res) => {
   let reccomend = [];
   let notRec = [];
   let neutral = []; 
-  for (var i = 0; i < 5; ++i) {
-    let curr = await callApi(tickers[i]);
-    if (curr === 'fail') {
-      res.json({reccomend: 'fail', notRec: 'fail', neutral: 'fail'});
-    }
-    else {
+  if (curr === 'fail') {
+    res.json({reccomend: 'fail', notRec: 'fail', neutral: 'fail'});
+  }
+  else {
+    for (var i = 0; i < 5; ++i) {
+      let curr = await callApi(tickers[i]);
       if (curr[0] - curr[1] > 0) {
         reccomend.push(tickers[i])
       }
@@ -36,8 +36,8 @@ app.post('/', async (req, res) => {
       else {
         neutral.push(tickers[i])
       }
-      res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
     }
+    res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
   }
 })
 
