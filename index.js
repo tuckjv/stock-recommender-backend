@@ -24,7 +24,7 @@ app.post('/', async (req, res) => {
   for (var i = 0; i < 5; ++i) {
     let curr = await callApi(tickers[i]);
     if (curr === 'fail') {
-      return null;
+      return Error;
     }
     if (curr[0] - curr[1] > 0) {
       reccomend.push(tickers[i])
