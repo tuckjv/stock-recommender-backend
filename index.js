@@ -36,8 +36,8 @@ app.post('/', async (req, res) => {
       else {
         neutral.push(tickers[i])
       }
+      res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
     }
-    res.json({reccomend: reccomend, notRec: notRec, neutral: neutral});
   }
 })
 
